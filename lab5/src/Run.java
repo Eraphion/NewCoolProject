@@ -3,5 +3,6 @@ public class Run {
 	{
 		Graphics window = new Graphics();
 		window.setVisible(true); 
+		
 	}
 }
