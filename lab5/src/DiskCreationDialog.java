@@ -85,17 +85,19 @@ public class DiskCreationDialog extends JDialog
 		this.setSize(500, 250);
 		this.setLocation(300, 350);
 	}
-	private static int getMoney()
+	private static int getcapacity()
 	{
-		String money = JOptionPane.showInputDialog("Введите корректную вместимость!");
+		String capacity = JOptionPane.showInputDialog("Введите корректную вместимость!");
 		int result = 0;
 		try
 		{
-			result = Integer.parseInt(money);
+			result = Integer.parseInt(capacity);
+			if(result < 0)
+				result = getcapacity();
 		}
 		catch (Exception Ex)
 		{
-			return getMoney();
+			return getcapacity();
 		}
 		return result;
 	}
@@ -103,30 +105,32 @@ public class DiskCreationDialog extends JDialog
 	{
 		result.setShop(ShopField.getText());
 		result.setAddress(AddressField.getText());
-		int money = 0;
+		int capacity = 0;
 		try
 		{
-			money = Integer.parseInt(DiskCapacityField.getText());
+			capacity = Integer.parseInt(DiskCapacityField.getText());
+			if(capacity <= 0)
+				capacity = getcapacity();
 		}
 		catch(Exception Ex)
 		{
-			money = getMoney();
+			capacity = getcapacity();
 		}
-		result.setCapacity(money);
+		result.setCapacity(capacity);
 		return result;
 	}
 	public static void ElectroAdded()
 	{
-		int money = 0;
+		int capacity = 0;
 		try
 		{
-			money = Integer.parseInt(DiskCapacityField.getText());
+			capacity = Integer.parseInt(DiskCapacityField.getText());
 		}
 		catch(Exception Ex)
 		{
-			money = getMoney();
+			capacity = getcapacity();
 		}
-		result.setCapacity(money);
+		result.setCapacity(capacity);
 		ECD = new ElectroCreationDialog();
 		ECD.setVisible(true);
 	}

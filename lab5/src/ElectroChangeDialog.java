@@ -109,6 +109,8 @@ public class ElectroChangeDialog extends JDialog
 		try
 		{
 			result = Integer.parseInt(age);
+			if(result < 0)
+				result = getInt(Message);
 		}
 		catch (Exception Ex)
 		{
@@ -139,6 +141,8 @@ public class ElectroChangeDialog extends JDialog
 		try
 		{
 			Duration = Integer.parseInt(str);
+			if(Duration <= 0)
+				Duration = getInt("Отрицательная продолжительность? Серьёзно!?");
 		}
 		catch(Exception Ex)
 		{
